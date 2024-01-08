@@ -25,10 +25,9 @@ public class PasswordValidatorTest {
     @DisplayName("비밀번호가 8자 미만 또는 12자 초과인 경우 IllegalArgumentException 예외를 발생시킨다.")
     @ParameterizedTest
     @ValueSource(strings = {"aabbcce", "aabbccddeeffg"})
-    @Test
     void validatePasswordTest2(String password) {
 
-        assertThatCode(() -> PasswordValidator.validate("aabb"))
+        assertThatCode(() -> PasswordValidator.validate(password))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("비밀번호는 최소 8자 이상 12자 이하여야 한다.");
     }
